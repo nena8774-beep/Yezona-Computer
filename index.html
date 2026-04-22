@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yezona Computer - Company Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Clarendon, Clarendon;
+            color: #fff;
+            background: #08111f;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 12, 24, 0.72);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand span {
+            color: #5fd2ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #dbe7ff;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #5fd2ff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px 80px;
+            background:
+                linear-gradient(rgba(4, 10, 20, 0.72), rgba(4, 10, 20, 0.82)),
+                url('1_Yezona Computer.jpg') center center / cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(95, 210, 255, 0.10), transparent 55%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4.8rem);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #d7e6ff;
+            max-width: 760px;
+            margin: 0 auto 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff5a6f, #5fd2ff);
+            color: #08111f;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.32);
+        }
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background: rgba(11, 19, 35, 0.95);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: #5fd2ff;
+            font-weight: 700;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 18s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .about {
+            color: #dbe7ff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-top: 28px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(95, 210, 255, 0.35);
+        }
+
+        .card h3 {
+            color: #5fd2ff;
+            margin-bottom: 10px;
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #5fd2ff;
+            animation: typing 4s steps(44, end), blink 0.8s step-end infinite;
+            max-width: 100%;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .contact {
+            text-align: center;
+            color: #dbe7ff;
+        }
+
+        .contact-box {
+            margin-top: 24px;
+            padding: 26px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            background: #050a12;
+            color: #9eb6d6;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                background-position: center center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="brand">Yezona <span>Computer</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#service">Layanan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Yezona Computer</h1>
+            <p class="typewriter">Toko komputer profesional, lengkap,<br>
+			dan terpercaya untuk kebutuhan teknologi Anda.</p>
+            <br />
+            <a href="#service" class="btn">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <div class="marquee">
+        <span>⚡ Promo Laptop Terbaru • ⚡ PC Gaming Custom • ⚡ Service Komputer Cepat • ⚡ Aksesoris Original • ⚡ Harga Bersahabat •</span>
+    </div>
+
+    <section id="about" class="about">
+        <h2 class="section-title">Tentang Kami</h2>
+        <p style="text-align:center; max-width:850px; margin:0 auto; color:#dbe7ff;">
+            Apa itu Yezona Computer?
+Yezona Computer adalah layanan Service Laptop yang berlokasi di Malang.<BR>
+Dengan pengalaman teknisi yang teruji dan komitmen terhadap kualitas, <br>
+Yezona Computer melayani perbaikan, perawatan, upgrade, dan konsultasi hardware & software untuk berbagai merek laptop.<br>
+ Jika Anda mencari Teknisi Laptop Malang yang ramah, cepat, dan terpercaya — Yezona Computer adalah pilihan tepat.
+        </p>
+
+        <div class="about-grid">
+            <div class="card">
+                <h3>Profesional</h3>
+                <p>Memberikan pelayanan yang rapi, cepat, dan terpercaya untuk setiap pelanggan.</p>
+            </div>
+            <div class="card">
+                <h3>Lengkap</h3>
+                <p>Tersedia laptop, PC gaming, aksesoris, sparepart, dan layanan servis komputer.</p>
+            </div>
+            <div class="card">
+                <h3>Terjangkau</h3>
+                <p>Harga kompetitif dengan kualitas produk yang tetap terjamin.Tentunya bergaransi dan kualitas terpercaya.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="service">
+        <h2 class="section-title">Layanan Kami</h2>
+        <div class="about-grid">
+            <div class="card">
+                <h3>Jual Laptop & PC</h3>
+                <p>Berbagai pilihan laptop dan komputer untuk kebutuhan sekolah, kerja, hingga gaming.</p>
+            </div>
+            <div class="card">
+                <h3>Service Komputer</h3>
+                <p>Perbaikan hardware dan software dengan teknisi berpengalaman,tergabung dalam teknisi laptop malang</p>
+            </div>
+            <div class="card">
+                <h3>Custom PC</h3>
+                <p>Rakit PC sesuai kebutuhan dan budget Anda dengan komponen terbaik.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Kontak Kami</h2>
+        <div class="contact-box">
+            <p>Alamat: Jalan Sidomakmur 168 Jetak Ngasri Mulyoagung Kec dau Kab malang, Jawa Timur</p>
+            <p>WhatsApp: 0851-9628-5500</p>
+            <p>Email: yezonacomputer01@gmail.com</p>
+            <div class="marquee" style="margin-top:18px; border-radius:12px;">
+                <span>📌 Datang langsung ke toko Yezona Computer • Konsultasi kebutuhan PC dan laptop Anda •</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Yezona Computer. All Rights Reserved.
+    </footer>
+
+</body>
+<audio autoplay loop>
+    <source src="Coldplay - Paradise (Official Audio).mp3" type="audio/mpeg">
+</audio>
+
+</html>
